@@ -2,7 +2,7 @@
  *  Compilation:  javac OrderCheck.java
  *  Execution:    java OrderCheck 5 10 15 2
  *
- *  @author: Janine Yanes
+ *  @author: Janine Yanes, jqy2@scarletmail.rutgers.edu, jqy2
  *
  *  Prints true if the four integer inputs are in strictly ascending
  *  or descending order, false otherwise
