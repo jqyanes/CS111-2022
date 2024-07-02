@@ -21,7 +21,6 @@
  *************************************************************************/
 
 public class CheckDigit {
-
     public static void main (String[] args) {
         long number = Long.parseLong(args[0]);
         Long secondRun = number / 10;
@@ -32,9 +31,9 @@ public class CheckDigit {
             number = number / 100;
             b = b + (int)(secondRun % 10);
             secondRun = secondRun/100;
-            }
+        }
         a = a % 10;
         b = (3 * b) % 10;
         System.out.println((a + b) % 10);
-        }
     }
+}
