@@ -30,28 +30,26 @@ public class RandomWalker {
 
     public static void main(String[] args) {
 
-	int x = 0;
+    int x = 0;
     int y = 0;
     int a;
     int b;
-    int n = Integer.parseInt(args[0]);
+    int n = Integer.parseInt(args[0]); // number of steps
     System.out.println("(0,0)");
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         if (Math.random() < 0.5) {
             a = x;
-            while (x == a){
+            while (x == a) { // while x-coordinate has not moved (0 has been randomly generated)
                  x = x + (int) (Math.random() * 3) - 1;
             }
-            System.out.println("(" + x + "," + y + ")");
-            
         }
         else {
             b = y;
-            while (y == b) {
+            while (y == b) { // while y-coordinate has not moved (0 has been randomly generated)
                  y = y + (int) (Math.random() * 3) - 1;
             }
-            System.out.println("(" + x + "," + y + ")");
         }
+	System.out.println("(" + x + "," + y + ")");
     }
     System.out.println("Squared distance = " + (Math.pow(x, 2) + Math.pow(y,2)));
     }
