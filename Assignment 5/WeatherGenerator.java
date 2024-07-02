@@ -38,20 +38,15 @@ public class WeatherGenerator {
     public static void populateArrays(double[][] drywet, double[][] wetwet) {
 
         StdIn.setFile("drywet.txt");
-
-	for(int i=0; i < drywet.length; i++){
-            for(int j=0; j<14; j++){
-                drywet[i][j] = StdIn.readDouble();
-            }
+	for(int i = 0; i < drywet.length; i++){
+            for(int j = 0; j < 14; j++) drywet[i][j] = StdIn.readDouble();
         }
 
 	StdIn.setFile("wetwet.txt");
-
-	for(int i=0; i < drywet.length; i++){
-            for(int j=0; j<14; j++){
-                wetwet[i][j] = StdIn.readDouble();
-            }
+	for(int i = 0; i < drywet.length; i++){
+            for(int j = 0; j < 14; j++) wetwet[i][j] = StdIn.readDouble();
         }
+	    
     }
 
     /* 
@@ -127,20 +122,18 @@ public class WeatherGenerator {
         
         // COMPLETE THIS METHOD
         int[] forecast = new int[numberOfDays];
-        if (StdRandom.uniform() < 0.5) {
-            forecast[0] = 1;
-        }
+        if (StdRandom.uniform() < 0.5) forecast[0] = 1;
         else forecast[0] = 2;
         for (int i = 1; i < numberOfDays; i++) {
             if (forecast[i - 1] == 1) {
                 if (StdRandom.uniform() < wetwetProbability) forecast[i] = 1;
                 else forecast[i] = 2;
-                }
+        	}
             else {
                 if (StdRandom.uniform() < drywetProbability) forecast[i] = 1;
                 else forecast[i] = 2;
                 }
-            }
+        }
         return forecast;
     }
 
@@ -216,16 +209,13 @@ public class WeatherGenerator {
         // COMPLETE THIS METHOD
         int wetCount = 0;
         int dryCount = 0;
-        for (int i = 0; i < forecast.length; i++){
+        for (int i = 0; i < forecast.length; i++) {
             if (forecast[i] == 1) wetCount ++;
             else dryCount ++;
         }
-        if (mode == 1){
-            return wetCount;
-        }
-        else {
-            return dryCount;
-        }
+        if (mode == 1) return wetCount;
+        else return dryCount;
+	    
     }
 
     /* 
@@ -256,25 +246,17 @@ public class WeatherGenerator {
         for (int i = 0; i < forecast.length; i++) {
             if (forecast[i] == 1) {
                 wetSpell++;
-                if (wetSpell > longestWetSpell) {
-                    longestWetSpell = wetSpell;
-                }
+                if (wetSpell > longestWetSpell) longestWetSpell = wetSpell;
                 drySpell = 0;
             }
             if (forecast[i] == 2) {
                 drySpell++; 
-                if (drySpell > longestDrySpell) {
-                    longestDrySpell = drySpell;
-                }
+                if (drySpell > longestDrySpell) longestDrySpell = drySpell;
                 wetSpell = 0;
             }
         }
-        if (mode == WET) {
-            return longestWetSpell;
-        }
-        else {
-            return longestDrySpell;
-        } 
+        if (mode == WET) return longestWetSpell;
+        else return longestDrySpell;
     }
 
     /* 
@@ -302,17 +284,15 @@ public class WeatherGenerator {
         int maxDryStart = forecast.length;
         int[] forecastWeek = new int[7];
         for (int i = 0; i < (forecast.length - 6); i++) {
-            for (int j = 0; j < 7; j++) {
-                forecastWeek[j] = forecast[i + j];
-            }
+            for (int j = 0; j < 7; j++) forecastWeek[j] = forecast[i + j];
             if (numberOfWetDryDays(forecastWeek, 2) > maxDry) {
                 maxDry = numberOfWetDryDays(forecastWeek, 2);
                 maxDryStart = i;
                 }
             if (numberOfWetDryDays(forecastWeek, 2) == maxDry) {
                 if (i < maxDryStart) maxDryStart = i;
-                }
-            }
+        	}
+        }
         return maxDryStart;
     }
 
