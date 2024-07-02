@@ -15,24 +15,25 @@
  *  true
  *************************************************************************/
 
-public class FindDuplicate {
+ public class FindDuplicate {
 
     public static void main(String[] args) {
 
-		int n = args.length; 
+	int n = args.length; 
     	int[] nums = new int[n];
-		int count = 0;
-		int search = 0;
-		int test = 0;
-    	for (int i = 0; i < n; i++) nums [i] = Integer.parseInt(args[i]);
-		for (int i = 0; i < nums.length; i++) {
-			search += 1;
-			for (int j = 0; j < nums.length; j++) {
-			if (search == nums[j]) count += 1;
-			if (count > 1) test = count;
-			}
-			count = 0;
+	int target = 1;
+	int count = 0;
+    	for (int i = 0; i < n; i++) nums[i] = Integer.parseInt(args[i]);
+	//for every number between 1 and n, check for duplicates
+	//exit while loop if duplicate is found
+	while ((target <= n) && (count < 2)) {
+		count = 0;
+		for (int i = 0; i < n; i++) {
+			if (nums[i] == target) count++;
 		}
-		System.out.println(test > 1);
+		target++;
 	}
+	System.out.println(count > 1);
+    }
+	 
 }
